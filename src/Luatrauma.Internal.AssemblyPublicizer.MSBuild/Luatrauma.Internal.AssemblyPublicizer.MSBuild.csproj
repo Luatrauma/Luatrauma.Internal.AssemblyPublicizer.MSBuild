@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Version>0.1.0</Version>
+    <VersionMetadata>git@@GitRevShort@@</VersionMetadata>
     <Authors>notpeelz</Authors>
     <Description>An MSBuild task for automating publicization of Luatrauma assemblies.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
