@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <_LuatraumaPublicizer_TaskPath>
+      <![CDATA[$(MSBuildThisFileDirectory)/../Luatrauma.Internal.AssemblyPublicizer.MSBuild/bin/Debug/netstandard2.0/Luatrauma.Internal.AssemblyPublicizer.MSBuild.dll]]>
+    </_LuatraumaPublicizer_TaskPath>
+  </PropertyGroup>
+  <Import Project="../Luatrauma.Internal.AssemblyPublicizer.MSBuild/build/Luatrauma.Internal.AssemblyPublicizer.MSBuild.props" />
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference
+      Include="Newtonsoft.Json"
+      Version="13.0.3"
+      />
+    <PackageReference
+      Include="BepInEx.AssemblyPublicizer"
+      Version="0.4.1"
+      />
+  </ItemGroup>
+</Project>

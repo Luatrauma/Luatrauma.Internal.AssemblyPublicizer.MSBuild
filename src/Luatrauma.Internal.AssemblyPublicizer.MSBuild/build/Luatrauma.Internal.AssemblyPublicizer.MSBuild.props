@@ -1,0 +1,40 @@
+<Project>
+  <PropertyGroup>
+    <_LuatraumaPublicizer_TaskPath Condition="'$(_LuatraumaPublicizer_TaskPath)' == ''">
+      <![CDATA[$(MSBuildThisFileDirectory)/../tools/netstandard2.0/Luatrauma.Internal.AssemblyPublicizer.MSBuild.dll]]>
+    </_LuatraumaPublicizer_TaskPath>
+  </PropertyGroup>
+
+  <UsingTask
+    TaskName="Luatrauma.Internal.AssemblyPublicizer.MSBuild.PublicizeAssemblies"
+    AssemblyFile="$(_LuatraumaPublicizer_TaskPath)"
+    />
+
+  <Target
+    Name="LuatraumaPublicizer_Publicize"
+    AfterTargets="CopyFilesToOutputDirectory"
+    >
+    <ItemGroup>
+      <_LuatraumaPublicizer_AssembliesToPublicize
+        Include="@(MainAssembly)"
+        Destination="$(OutputPath)/Publicized/"
+        />
+      <_LuatraumaPublicizer_AssembliesToPublicize
+        Include="@(ReferenceCopyLocalPaths)"
+        Destination="$(OutputPath)/Publicized/%(ReferenceCopyLocalPaths.DestinationSubDirectory)/%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)"
+        />
+    </ItemGroup>
+    <Luatrauma.Internal.AssemblyPublicizer.MSBuild.PublicizeAssemblies
+      MSBuildOutputPath="$(OutputPath)"
+      Assemblies="@(_LuatraumaPublicizer_AssembliesToPublicize)"
+      >
+      <Output
+        TaskParameter="GeneratedFiles"
+        ItemName="PublicizedAssemblies"
+        />
+    </Luatrauma.Internal.AssemblyPublicizer.MSBuild.PublicizeAssemblies>
+    <ItemGroup>
+      <FileWrites Include="@(PublicizedAssemblies)" />
+    </ItemGroup>
+  </Target>
+</Project>
