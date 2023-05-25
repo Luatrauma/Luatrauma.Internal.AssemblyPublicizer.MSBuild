@@ -37,4 +37,18 @@
       <FileWrites Include="@(PublicizedAssemblies)" />
     </ItemGroup>
   </Target>
+
+  <Target
+    Name="LuatraumaPublicizer_AddFilesToPublishList"
+    AfterTargets="ComputeResolvedFilesToPublishList"
+    >
+    <ItemGroup>
+      <ResolvedFileToPublish Include="@(PublicizedAssemblies)">
+        <RelativePath>
+          <![CDATA[Publicized/%(Filename)%(Extension)]]>
+        </RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
 </Project>
