@@ -19,8 +19,8 @@
     <!--
       Normally we would set `$(BuildOutputTargetFolder)` to `tools` but Alias.MsBuild overrides the main
       assemblies and injects them into `@(ReferenceCopyLocalPaths)`.
-      We set `$(IncludeBuildOutput)` to `false`, otherwise it would conflict with the files Alias.MsBuild
-      inject.
+      We set `$(IncludeBuildOutput)` to `false`, otherwise it would conflict with the files that Alias.MsBuild
+      injects.
     -->
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <TargetsForTfmSpecificContentInPackage>CopyTaskToPackage</TargetsForTfmSpecificContentInPackage>
